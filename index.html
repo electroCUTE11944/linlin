@@ -1,0 +1,270 @@
+<title>LinLin Cake Shop — Fairytale Cakes, KL</title>
+<style>
+  :root {
+    --ground: #FBEFF3;
+    --sky: #C8E4F4;
+    --sky-deep: #A7CFE8;
+    --cream: #FFF9F3;
+    --surface: #FFFFFF;
+    --rose: #D46A97;
+    --rose-deep: #B84F80;
+    --blush: #F7D9E4;
+    --gold: #C9A24B;
+    --ink: #5A3A4E;
+    --ink-soft: #96788A;
+    --line: #F0DCE4;
+    --shadow: 0 22px 48px -26px rgba(90,58,78,.5);
+    --script: "Snell Roundhand", "Apple Chancery", "Segoe Script", "Brush Script MT", cursive;
+    --serif: "Didot", "Bodoni 72", "Bodoni MT", "Baskerville", "Palatino Linotype", Georgia, serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  /* Locked to light mode — the fairytale palette is designed for a bright ground. */
+
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  .page { background: var(--ground); color: var(--ink); font-family: var(--sans); line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  h1,h2,h3 { font-family: var(--serif); font-weight: 400; text-wrap: balance; margin: 0; letter-spacing: .01em; }
+  a { color: inherit; }
+  .eyebrow { font-family: var(--sans); font-size: .7rem; letter-spacing: .28em; text-transform: uppercase; color: var(--rose); font-weight: 700; }
+  .gold-rule { width: 64px; height: 1px; background: var(--gold); margin: 14px auto; opacity: .8; }
+
+  /* scalloped piped divider */
+  .scallop { height: 22px; background:
+      radial-gradient(circle at 11px 22px, var(--cream) 11px, transparent 12px) 0 0 / 22px 22px repeat-x; }
+  .pearls { height: 16px; background:
+      radial-gradient(circle at 8px 8px, var(--blush) 4px, transparent 5px) 0 0 / 16px 16px repeat-x; opacity: .9; }
+
+  /* Nav */
+  .nav { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--ground) 90%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .brand { font-family: var(--script); font-size: 2rem; color: var(--rose-deep); line-height: 1; padding-top: 6px; }
+  .nav-links { display: flex; gap: 30px; align-items: center; }
+  .nav-links a { text-decoration: none; font-size: .92rem; color: var(--ink-soft); transition: color .2s; }
+  .nav-links a:hover { color: var(--rose); }
+  .btn { display: inline-block; background: var(--rose-deep); color: #fff !important; text-decoration: none; padding: 12px 26px; border-radius: 999px; font-size: .92rem; font-weight: 700; letter-spacing: .01em; border: none; cursor: pointer; transition: background .2s, transform .2s, box-shadow .2s; box-shadow: 0 8px 20px -8px rgba(184,79,128,.7); }
+  .btn:hover { background: #9E3A6B; transform: translateY(-1px); box-shadow: 0 12px 26px -8px rgba(184,79,128,.8); }
+  .nav .btn { box-shadow: 0 6px 16px -6px rgba(184,79,128,.75); }
+  .btn.ghost { background: transparent; color: var(--rose-deep) !important; border: 1.5px solid var(--rose); box-shadow: none; }
+  .btn.ghost:hover { background: var(--rose); color: #fff !important; }
+  @media (max-width: 720px){ .nav-links a:not(.btn){ display:none; } }
+
+  /* Hero with sky */
+  .hero { position: relative; background:
+      linear-gradient(180deg, var(--sky) 0%, var(--sky) 40%, color-mix(in srgb, var(--sky) 40%, var(--ground)) 100%);
+      padding: 64px 0 0; overflow: hidden; }
+  .cloud { position: absolute; background: var(--cream); border-radius: 50%; opacity: .55; filter: blur(2px); }
+  .c1 { width: 160px; height: 60px; top: 40px; left: 6%; }
+  .c2 { width: 220px; height: 74px; top: 90px; right: 8%; }
+  .c3 { width: 120px; height: 46px; top: 180px; left: 30%; opacity: .4; }
+  .hero-grid { position: relative; display: grid; grid-template-columns: 1.05fr .95fr; gap: 46px; align-items: center; padding-bottom: 30px; }
+  .ribbon { display: inline-flex; align-items: center; gap: .5rem; font-size: .82rem; background: var(--cream); color: var(--rose-deep); padding: 8px 16px; border-radius: 999px; font-weight: 600; margin-bottom: 22px; box-shadow: 0 6px 16px -10px rgba(90,58,78,.4); }
+  .hero h1 { font-size: clamp(2.7rem, 6.4vw, 4.6rem); line-height: 1.02; color: var(--ink); }
+  .hero h1 em { font-style: italic; color: var(--rose-deep); }
+  .hero .lede { font-size: 1.12rem; color: var(--ink); max-width: 44ch; margin: 22px 0 30px; opacity: .85; }
+  .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .hero-note { font-size: .84rem; color: var(--ink); opacity: .7; margin-top: 18px; }
+
+  .cake-card { aspect-ratio: 4/5; border-radius: 240px 240px 26px 26px; position: relative; overflow: hidden;
+      background: radial-gradient(120% 90% at 50% 15%, #FBD7E4 0%, #E88FB0 55%, #C9578A 100%);
+      box-shadow: var(--shadow); display: flex; align-items: flex-end; justify-content: center; padding: 22px;
+      border: 4px solid var(--cream); }
+  .cake-card .emoji { position: absolute; inset: 0; display: grid; place-items: center; font-size: 8rem; filter: drop-shadow(0 10px 14px rgba(0,0,0,.2)); }
+  .cake-card .tag { position: relative; background: rgba(255,255,255,.94); color: var(--ink); border-radius: 14px; padding: 12px 18px; text-align: center; box-shadow: 0 10px 20px -10px rgba(0,0,0,.4); }
+  .cake-card .tag b { font-family: var(--serif); font-size: 1.05rem; display: block; }
+  .cake-card .tag span { font-size: .8rem; color: var(--gold); font-weight: 700; letter-spacing: .04em; }
+
+  section.block { padding: 62px 0; }
+  .head { text-align: center; max-width: 620px; margin: 0 auto 42px; }
+  .head h2 { font-size: clamp(2rem, 4.4vw, 2.9rem); }
+  .head p { color: var(--ink-soft); margin: 6px 0 0; }
+
+  /* Menu */
+  .menu { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+  .item { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; transition: transform .22s, box-shadow .22s; }
+  .item:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+  .item .thumb { aspect-ratio: 4/3; display: grid; place-items: center; font-size: 3.8rem; position: relative; }
+  .item .thumb::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 12px; background: radial-gradient(circle at 8px 12px, rgba(255,255,255,.85) 5px, transparent 6px) 0 0/16px 12px repeat-x; }
+  .item:nth-child(1) .thumb { background: linear-gradient(150deg,#F7C9DA,#E58AA8); }
+  .item:nth-child(2) .thumb { background: linear-gradient(150deg,#CFE8F6,#F6C6DC); }
+  .item:nth-child(3) .thumb { background: linear-gradient(150deg,#CDE7D8,#AFD7EC); }
+  .item:nth-child(4) .thumb { background: linear-gradient(150deg,#F6D6E0,#E7A9C4); }
+  .item:nth-child(5) .thumb { background: linear-gradient(150deg,#EBDCF3,#CBA9E4); }
+  .item:nth-child(6) .thumb { background: linear-gradient(150deg,#FBE6C9,#F3CE9C); }
+  .item .body { padding: 18px 20px 22px; }
+  .item h3 { font-size: 1.2rem; }
+  .item p { margin: 6px 0 0; font-size: .88rem; color: var(--ink-soft); }
+  .item .price { margin-top: 12px; font-weight: 700; color: var(--rose-deep); }
+
+  /* About */
+  .about { display: grid; grid-template-columns: .9fr 1.1fr; gap: 46px; align-items: center; }
+  .portrait { aspect-ratio: 4/5; border-radius: 200px 200px 24px 24px; box-shadow: var(--shadow); border: 5px solid var(--cream);
+      background: radial-gradient(120% 90% at 50% 20%, #CFE7F6, #E58AA8 130%); display: grid; place-items: center; font-size: 6rem; }
+  .about h2 { font-size: clamp(1.9rem,4vw,2.7rem); }
+  .about p { color: var(--ink-soft); margin: 18px 0 0; }
+  .stats { display: flex; gap: 34px; margin-top: 28px; }
+  .stat b { font-family: var(--serif); font-size: 2.1rem; color: var(--rose-deep); display: block; line-height: 1; }
+  .stat span { font-size: .78rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .12em; }
+
+  .band { background: var(--cream); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+  /* Steps */
+  .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; counter-reset: s; }
+  .step { text-align: center; padding: 24px; }
+  .step .num { counter-increment: s; font-family: var(--serif); color: #fff; width: 52px; height: 52px; border-radius: 50%; background: var(--rose); display: grid; place-items: center; margin: 0 auto 18px; font-size: 1.3rem; box-shadow: 0 0 0 5px var(--blush); }
+  .step .num::before { content: counter(s); }
+  .step h3 { font-size: 1.25rem; }
+  .step p { color: var(--ink-soft); margin: 8px 0 0; font-size: .92rem; }
+
+  /* Visit */
+  .visit { display: grid; grid-template-columns: 1fr 1fr; gap: 42px; align-items: center; }
+  .map { aspect-ratio: 16/11; border-radius: 22px; box-shadow: var(--shadow); position: relative; overflow: hidden; border: 4px solid var(--cream);
+      background: linear-gradient(0deg, rgba(212,106,151,.1), rgba(212,106,151,.1)),
+      repeating-linear-gradient(0deg, var(--line) 0 1px, transparent 1px 46px),
+      repeating-linear-gradient(90deg, var(--line) 0 1px, transparent 1px 46px), var(--blush); }
+  .pin { position: absolute; top: 44%; left: 43%; font-size: 2.6rem; filter: drop-shadow(0 6px 6px rgba(0,0,0,.25)); }
+  .visit h2 { font-size: clamp(1.9rem,4vw,2.6rem); }
+  .info-row { display: flex; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .info-row .k { min-width: 92px; font-weight: 700; font-size: .9rem; }
+  .info-row .v { color: var(--ink-soft); font-size: .95rem; }
+
+  footer { background: var(--blush); padding: 58px 0 40px; margin-top: 0; }
+  .foot-cta { text-align: center; }
+  .foot-cta .brand { font-size: 2.6rem; margin-bottom: 8px; }
+  .foot-cta h2 { font-size: clamp(1.9rem,4vw,2.7rem); }
+  .foot-cta p { color: var(--ink-soft); margin: 10px 0 24px; }
+  .foot-meta { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--line); font-size: .84rem; color: var(--ink-soft); }
+
+  @media (max-width: 860px){ .hero-grid, .about, .visit { grid-template-columns: 1fr; } .menu, .steps { grid-template-columns: 1fr 1fr; } .portrait, .cake-card { max-width: 340px; margin: 0 auto; } }
+  @media (max-width: 560px){ .menu, .steps { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce){ * { transition: none !important; animation: none !important; } }
+  .reveal { animation: rise .7s ease both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+</style>
+
+<div class="page">
+  <nav class="nav">
+    <div class="wrap">
+      <div class="brand">LinLin</div>
+      <div class="nav-links">
+        <a href="#cakes">Cakes</a>
+        <a href="#about">Our Story</a>
+        <a href="#order">How to Order</a>
+        <a href="#visit">Visit</a>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <span class="ribbon">🎀 Now open in KL — handmade fairytale cakes</span>
+        <h1>Every cake tells a <em>fairytale</em>.</h1>
+        <p class="lede">Storybook castles, dreamy carousels and vintage cream cakes — each one hand-piped by LinLin in Kuala Lumpur for celebrations worth remembering.</p>
+        <div class="hero-cta">
+          <a href="#order" class="btn">Order a Cake</a>
+          <a href="#cakes" class="btn ghost">See the Cakes</a>
+        </div>
+        <p class="hero-note">✦ Made to order · Please book 5–7 days ahead ✦</p>
+      </div>
+      <div class="reveal">
+        <div class="cake-card">
+          <div class="emoji">🏰</div>
+          <div class="tag"><b>Fairytale Castle Cake</b><span>SIGNATURE · from RM220</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="scallop"></div>
+  </header>
+
+  <section class="block" id="cakes">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">The Collection</span>
+        <div class="gold-rule"></div>
+        <h2>Cakes like storybook illustrations</h2>
+        <p>Vintage buttercream artistry — every tier hand-painted and hand-piped to order.</p>
+      </div>
+      <div class="menu">
+        <article class="item"><div class="thumb">🏰</div><div class="body"><h3>Fairytale Castle Cake</h3><p>A tiered pink palace with hand-piped turrets &amp; roses.</p><div class="price">from RM220</div></div></article>
+        <article class="item"><div class="thumb">🎠</div><div class="body"><h3>Carousel Dream Cake</h3><p>Pastel carousel with pearls, ribbons &amp; a piped canopy.</p><div class="price">from RM240</div></div></article>
+        <article class="item"><div class="thumb">🏡</div><div class="body"><h3>Storybook Scenic Cake</h3><p>Hand-painted skies, cottages &amp; landscapes in buttercream.</p><div class="price">RM188</div></div></article>
+        <article class="item"><div class="thumb">🌹</div><div class="body"><h3>Vintage Rose Cake</h3><p>Lambeth-style piping with cascading cream roses.</p><div class="price">RM158</div></div></article>
+        <article class="item"><div class="thumb">👑</div><div class="body"><h3>Little Princess Cake</h3><p>A dainty single tier with crown, pearls &amp; ruffles.</p><div class="price">RM148</div></div></article>
+        <article class="item"><div class="thumb">🌸</div><div class="body"><h3>Pastel Pearl Cake</h3><p>Soft pastels, piped scallops &amp; sugar pearls.</p><div class="price">RM138</div></div></article>
+      </div>
+    </div>
+  </section>
+
+  <div class="band">
+    <div class="pearls"></div>
+    <section class="block" id="about">
+      <div class="wrap about">
+        <div class="portrait">👑</div>
+        <div>
+          <span class="eyebrow">Our Story</span>
+          <div class="gold-rule" style="margin-left:0"></div>
+          <h2>A little magic, piped by hand</h2>
+          <p>LinLin began baking from home, turning buttercream into tiny worlds — castles, carousels and painterly skies that felt straight out of a storybook. After thousands of celebrations, LinLin Cake Shop now has a home in KL, where every cake is still made to order, by hand, with love.</p>
+          <div class="stats">
+            <div class="stat"><b>5,000+</b><span>Cakes made</span></div>
+            <div class="stat"><b>100%</b><span>Hand-piped</span></div>
+            <div class="stat"><b>2020</b><span>Baking since</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="block" id="order">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">How to Order</span>
+        <div class="gold-rule"></div>
+        <h2>Your cake, in three steps</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="num"></div><h3>Choose your dream</h3><p>Pick a signature design or share your fairytale theme with us.</p></div>
+        <div class="step"><div class="num"></div><h3>Reserve your date</h3><p>WhatsApp us 5–7 days ahead — these cakes take time to hand-pipe.</p></div>
+        <div class="step"><div class="num"></div><h3>Pickup or delivery</h3><p>Collect at The Pocket or have it delivered across the Klang Valley.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="band">
+    <div class="pearls"></div>
+    <section class="block" id="visit">
+      <div class="wrap visit">
+        <div class="map"><div class="pin">📍</div></div>
+        <div>
+          <span class="eyebrow">Visit Us</span>
+          <div class="gold-rule" style="margin-left:0"></div>
+          <h2>Come find the magic</h2>
+          <div style="margin-top:20px;">
+            <div class="info-row"><div class="k">Location</div><div class="v">The Pocket, Sungai Besi, Kuala Lumpur</div></div>
+            <div class="info-row"><div class="k">Hours</div><div class="v">Tue–Sun · 11am – 7pm (Closed Mondays)</div></div>
+            <div class="info-row"><div class="k">Order</div><div class="v">WhatsApp +60 12-345 6789</div></div>
+            <div class="info-row"><div class="k">Follow</div><div class="v">@linlin_cake on Instagram</div></div>
+          </div>
+          <a href="#order" class="btn" style="margin-top:24px;">Message on WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="wrap foot-cta">
+      <div class="brand">LinLin</div>
+      <span class="eyebrow">Once upon a celebration</span>
+      <h2>Ready to order your fairytale?</h2>
+      <p>Reserve your cake today — happily ever after starts with a slice.</p>
+      <a href="#order" class="btn">Order a Cake</a>
+      <div class="foot-meta">
+        <span>© 2026 Lin &amp; Co Enterprise (SSM 202003236834) · Est. 2020 · Kuala Lumpur</span>
+        <span>LinLin Cake · Hand-piped to order · @linlin_cake 🎀</span>
+      </div>
+    </div>
+  </footer>
+</div>
